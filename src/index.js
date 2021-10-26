@@ -4,14 +4,14 @@ import './index.css';
 import {App} from './App';
 import reportWebVitals from './reportWebVitals';
 import store from "./redux/redux-store";
-import StoreContext from "./StoreContext"
+import {Provider} from 'react-redux';
 
 let rerenderTemplateTree = (store) => {
     ReactDOM.render(
         <React.StrictMode>
-            <StoreContext.Provider value={store}>
+            <Provider store={store}>
             <App/>
-            </StoreContext.Provider>
+            </Provider>
         </React.StrictMode>,
         document.getElementById('root')
     );

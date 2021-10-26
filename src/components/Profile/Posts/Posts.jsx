@@ -16,7 +16,7 @@ const Posts = (props) => {
 
     let onPostChange = () => {
         let textareaMessage = newPostEl.current.value;
-        props.updateNewPostText(textareaMessage);
+        props.updatePostMessage(textareaMessage);
     };
 
 
