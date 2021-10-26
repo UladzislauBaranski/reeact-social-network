@@ -1,22 +1,22 @@
 import React from "react";
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
 import Posts from "./Posts";
-import StoreContext from "./StoreContext"
+import StoreContext from "./../../../StoreContext";
 
-const PostsContainer = (props) => {
+const PostsContainer = () => {
     return (
         <StoreContext.Consumer>{
             (store) => {
-                let state = props.store.getState();
+                let state = store.getState();
 
                 let addPost = () => {
                     let action = addPostActionCreator();
-                    props.store.dispatch(action);
+                    store.dispatch(action);
                 };
 
                 let updatePostMessage = (textareaMessage) => {
                     let action = updateNewPostTextActionCreator(textareaMessage);
-                    props.store.dispatch(action);
+                    store.dispatch(action);
 
                 };
 

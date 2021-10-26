@@ -16,7 +16,7 @@ export function App(props) {
                            render={() => <Profile/>}/>
 
                     <Route path='/dialogs'
-                           render={() => <DialogsContainer store={props.store}/>}/>
+                           render={() => <DialogsContainer/>}/>
                 </div>
             </div>
         </BrowserRouter>
