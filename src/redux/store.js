@@ -1,4 +1,5 @@
-/*let postData = [
+/*
+let postData = [
     {id: 1, message: 'how are you', likesCount: 1},
     {id: 2, message: 'hyhy', likesCount: 2},
     {id: 3, message: 'youout', likesCount: 13},
@@ -20,7 +21,7 @@ let dialogsMessage = [
     {id: 3, message: 'wwwqdass'},
     {id: 4, message: 'wedsd'},
     {id: 5, message: 'asdsadasascdfr'},
-];*/
+];
 
 import profileReducer from "./profile-reducer";
 import messageReducer from "./message-reducer";
@@ -75,14 +76,14 @@ let store = {
     },
 
     dispatch(action) {
-/*
+/!*
              let profileReducer1 = profileReducer(this._state.profilePage, action);
-             this._state.profilePage.posts.push(profileReducer1);*/
+             this._state.profilePage.posts.push(profileReducer1);*!/
 
         this._state.profilePage = profileReducer(this._state.profilePage, action);
 
-     /*   let messageReducer1 = messageReducer(this._state.messagePage, action);
-        this._state.messagePage.messages.push(messageReducer1);*/
+     /!*   let messageReducer1 = messageReducer(this._state.messagePage, action);
+        this._state.messagePage.messages.push(messageReducer1);*!/
         this._state.messagePage = messageReducer(this._state.messagePage, action);
         //this._state.sidebar = messageReducer(this._state.messagePage, action);
 
@@ -95,3 +96,4 @@ export default store;
 
 
 
+*/

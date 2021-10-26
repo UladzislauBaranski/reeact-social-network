@@ -5,10 +5,10 @@ import {App} from './App';
 import reportWebVitals from './reportWebVitals';
 import store from "./redux/redux-store";
 
-let rerenderTemplateTree = (state) => {
+let rerenderTemplateTree = (store) => {
     ReactDOM.render(
         <React.StrictMode>
-            <App state={state} dispatch={store.dispatch.bind(store)}/>
+            <App store={store}/>
         </React.StrictMode>,
         document.getElementById('root')
     );
@@ -17,10 +17,9 @@ let rerenderTemplateTree = (state) => {
 //store.subscriber(rerenderTemplateTree);
 
 
-rerenderTemplateTree(store.getState());
+rerenderTemplateTree(store);
 store.subscribe(()=>{
-    let state = store.getState();
-    rerenderTemplateTree(state);
+    rerenderTemplateTree(store);
 });
 
 

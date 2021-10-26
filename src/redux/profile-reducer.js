@@ -27,7 +27,6 @@ const profileReducer = (state = initialState, action) => {
 
         case UPDATE_NEW_POST_TEXT:
             state.textMessage = action.newText;
-            console.log(state.textMessage);
             return state;
 
         default:
