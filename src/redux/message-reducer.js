@@ -19,21 +19,25 @@ let initialState = {
     newTextMessage: 'new message'
 };
 
-const messageReducer = (state=initialState, action) => {
+const messageReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case SEND_MESSAGE:
+        case SEND_MESSAGE: {
             let newMessageEntity = {
                 id: 6,
                 message: state.newTextMessage
             }
-            state.messages.push(newMessageEntity);
-            state.newTextMessage = '';
-            return state;
-
+            let copyState = {...state};
+            copyState.dialogs = [...state.dialogs];
+            copyState.messages = [...state.messages];
+            copyState.messages.push(newMessageEntity);
+            copyState.newTextMessage = '';
+            return copyState;
+        }
         case UPDATE_MESSAGE:
-            state.newTextMessage = action.newMessageText;
-            return state;
+            let copyState = {...state};
+            copyState.newTextMessage = action.newMessageText;
+            return copyState;
 
         default:
             return state;

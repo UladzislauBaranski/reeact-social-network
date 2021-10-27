@@ -6,25 +6,14 @@ import reportWebVitals from './reportWebVitals';
 import store from "./redux/redux-store";
 import {Provider} from 'react-redux';
 
-let rerenderTemplateTree = (store) => {
-    ReactDOM.render(
-        <React.StrictMode>
-            <Provider store={store}>
+ReactDOM.render(
+    <React.StrictMode>
+        <Provider store={store}>
             <App/>
-            </Provider>
-        </React.StrictMode>,
-        document.getElementById('root')
-    );
-}
-//rerenderTemplateTree(store.getState());
-//store.subscriber(rerenderTemplateTree);
-
-
-rerenderTemplateTree(store);
-store.subscribe(()=>{
-    rerenderTemplateTree(store);
-});
-
+        </Provider>
+    </React.StrictMode>,
+    document.getElementById('root')
+);
 
 
 reportWebVitals();
