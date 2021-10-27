@@ -3,22 +3,30 @@ import s from "./User.module.css";
 import * as axios from "axios";
 
 
-class Users extends React.Component{
-constructor(props) {
-    super(props);
-console.log('new');
+class Users extends React.Component {
+    /*constructor(props) {
+        super(props);
+    console.log('new');
+            axios.get("https://social-network.samuraijs.com/api/1.0/users")
+                .then(response => {
+                    this.props.setUsers(response.data.items);
+                })
+    }*/
+
+    componentDidMount() {
         axios.get("https://social-network.samuraijs.com/api/1.0/users")
             .then(response => {
                 this.props.setUsers(response.data.items);
             })
-}
+    }
+
     render() {
         return <div>
             {this.props.users.map(u => <div key={u.id}>
             <span>
                 <div>
                     <img className={s.img}
-                         src={u.photos.small !=null ? u.photos.small: 'https://softcatalog.info/ru/sites/default/files/styles/addthis/public/program/logo/adobe_photoshop-logo.png'}/>
+                         src={u.photos.small != null ? u.photos.small : 'https://softcatalog.info/ru/sites/default/files/styles/addthis/public/program/logo/adobe_photoshop-logo.png'}/>
                 </div>
                 <div>
                   {u.followed ? <button onClick={() => {
