@@ -21,22 +21,41 @@ let initialState = {
 
 const messageReducer = (state = initialState, action) => {
 
+    let copyState;
+
     switch (action.type) {
         case SEND_MESSAGE: {
             let newMessageEntity = {
                 id: 6,
                 message: state.newTextMessage
             }
-            let copyState = {...state};
-            copyState.dialogs = [...state.dialogs];
-            copyState.messages = [...state.messages];
-            copyState.messages.push(newMessageEntity);
-            copyState.newTextMessage = '';
+            //     let copyState = {...state};
+            //   copyState.dialogs = [...state.dialogs];
+            //   copyState.messages = [...state.messages];
+
+            copyState = {
+                ...state,
+                dialogs: [...state.dialogs],
+                messages: [...state.messages, newMessageEntity],
+                newTextMessage: ''
+            };
+         //   copyState.messages.push(newMessageEntity);
+           // copyState.newTextMessage = '';
+
+            /* let copyState = {
+                 ...state,
+                 dialogs: [...state.dialogs],
+                 messages: [...state.messages]
+             };
+ */
             return copyState;
         }
         case UPDATE_MESSAGE:
-            let copyState = {...state};
-            copyState.newTextMessage = action.newMessageText;
+            copyState = {
+                ...state,
+                newTextMessage: action.newMessageText
+            };
+          //  copyState.newTextMessage = action.newMessageText;
             return copyState;
 
         default:
