@@ -1,14 +1,46 @@
 import React from "react";
-import Users from "./Users";
 import {connect} from "react-redux";
 import {followAC, setPageAC, setTotalUsersCountAC, setUsersAC, unfollowAC} from "../../redux/users-reducer";
+import * as axios from "axios";
+import Users from "./Users";
+
+class UsersContainer extends React.Component {
+    componentDidMount() {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.setUsers(response.data.items);
+                this.props.setTotalUsersCount(response.data.totalCount);
+            })
+    }
+
+    onPageChanged = (page) => {
+        this.props.setPage(page);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.setUsers(response.data.items);
+            })
+    }
+
+    render() {
+        console.log('total', this.props.totalUsersCount)
+        console.log(this.props.pageSize)
+
+        return <Users totalUsersCount={this.props.totalUsersCount}
+                      pageSize={this.props.pageSize}
+                      currentPage={this.props.currentPage}
+                      users={this.props.users}
+                      onPageChanged={this.onPageChanged}
+                      unfollow={this.props.unfollow}
+                      follow={this.props.follow}/>
+    }
+}
 
 let mapStateToProps = (state) => {
     return {
         users: state.usersPage.users,
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage
+        currentPage: state.usersPage.currentPage,
     }
 }
 
@@ -32,5 +64,4 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users)
-export default UsersContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer)
