@@ -6,7 +6,7 @@ import {BrowserRouter, Route} from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 
-export function App(props) {
+export function App() {
     return (
         <BrowserRouter>
             <div className='app-wrapper'>

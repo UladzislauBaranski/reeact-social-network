@@ -4,8 +4,6 @@ import s from "./User.module.css";
 let Users = (props) => {
 
     let pageCount = Math.ceil(props.totalUsersCount / props.pageSize);
-    console.log('tot', props.totalUsersCount)
-    console.log('paf', props.pageSize)
     let pages = [];
     for (let i = 1; i <= pageCount; i++) {
         pages.push(i);
@@ -17,7 +15,7 @@ let Users = (props) => {
             {pages.map(p => {
                     return <span onClick={(e) => {
                         props.onPageChanged(p)
-                    }} className={props.currentPage === p && s.font}>{p + ' '}</span>
+                    }} className={props.currentPage === p && s.font}>{p+ ' '}</span>
                 })}
         </div>
 
