@@ -8,7 +8,6 @@ let Users = (props) => {
     let pages = [];
     for (let i = 1; i <= pageCount; i++) {
         pages.push(i);
-        console.log('pages', pages)
     }
 
     return <div>
@@ -40,6 +39,7 @@ let Users = (props) => {
 
                 <span>
                 <span>
+                    <div>{u.id}</div>
                     <div>{u.name}</div>
                     <div>{u.status}</div>
                 </span>
