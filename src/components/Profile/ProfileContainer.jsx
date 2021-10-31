@@ -1,7 +1,5 @@
 import React from "react";
 import {connect} from "react-redux";
-import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import PostsContainer from "./Posts/PostsContainer";
 import * as axios from "axios";
 import Profile from "./Profile";
 import {setUserProfile} from "../../redux/profile-reducer";

@@ -12,7 +12,7 @@ class HeaderContainer extends React.Component{
             .then(response => {
            if (response.data.resultCode===0){
                let {id, login, email}=response.data.data;
-               this.props.setAuthUserDate(id, login, email);
+               this.props.setAuthUserDate(id, email, login);
            }
             })
     }
