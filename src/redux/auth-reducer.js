@@ -1,3 +1,7 @@
+import {authAPI, usersAPI} from "../api/api";
+import {followSuccess, setToggleIsFollowingProgress} from "./users-reducer";
+import * as axios from "axios";
+
 const SET_USER_DATA = 'SET_USER_DATA';
 
 let initialState = {
@@ -30,5 +34,18 @@ export const setAuthUserDate = (userId, email, login) => (
             login: login
         }
     });
+
+export const getAuthUserData = () => {
+    return (dispatch) => {
+        authAPI.auth()
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    let {id, login, email} = response.data.data;
+                    console.log('1:',id, login, email);
+                    dispatch(setAuthUserDate(id, email, login));
+                }
+            })
+    }
+}
 
 export default authReducer;

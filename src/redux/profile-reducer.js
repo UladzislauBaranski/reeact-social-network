@@ -1,3 +1,7 @@
+import {profileAPI, usersAPI} from "../api/api";
+import {followSuccess, setToggleIsFollowingProgress} from "./users-reducer";
+import * as axios from "axios";
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
@@ -63,5 +67,12 @@ export const setUserProfile = (profile) => (
         profile: profile
     });
 
-
+export const getProfile = (userId) => {
+    return (dispatch) => {
+        profileAPI.getProfile(userId)
+            .then(response => {
+                dispatch(setUserProfile(response.data));
+            })
+    }
+}
 export default profileReducer;
