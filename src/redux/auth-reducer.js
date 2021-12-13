@@ -1,6 +1,4 @@
-import {authAPI, usersAPI} from "../api/api";
-import {followSuccess, setToggleIsFollowingProgress} from "./users-reducer";
-import * as axios from "axios";
+import {authAPI} from "../api/api";
 
 const SET_USER_DATA = 'SET_USER_DATA';
 
@@ -12,7 +10,6 @@ let initialState = {
 };
 
 const authReducer = (state = initialState, action) => {
-
     switch (action.type) {
         case SET_USER_DATA:
             return {
@@ -41,7 +38,6 @@ export const getAuthUserData = () => {
             .then(response => {
                 if (response.data.resultCode === 0) {
                     let {id, login, email} = response.data.data;
-                    console.log('1:',id, login, email);
                     dispatch(setAuthUserDate(id, email, login));
                 }
             })
