@@ -16,7 +16,7 @@ const ProfileInfo = (props) => {
                 <div>{props.profile.contacts.vk}</div>
                 <div>{props.profile.lookingForAJobDescription}</div>
                 <div>{props.profile.fullName}</div>
-                <ProfileStatus status={"hello"}/>
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
             </div>
         </div>
     );
