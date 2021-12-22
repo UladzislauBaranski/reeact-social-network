@@ -1,5 +1,7 @@
 import React from "react";
 import {Field, reduxForm} from 'redux-form';
+import {Input} from "../Common/FormsControl/FormsControl";
+import {requiredField} from "../../utils/validators/validators";
 
 
 
@@ -19,10 +21,10 @@ const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field type="text" name={"login"} component={"input"}/>
+                <Field type="text" name={"login"} component={Input} validate={requiredField}/>
             </div>
             <div>
-                <Field type="password" name={"password"} component={"input"}/>
+                <Field type="password" name={"password"} component={Input} validate={requiredField}/>
             </div>
             <div>
                 <Field type="checkbox" name={"rememberMe"} component={"input"}/> remember me
